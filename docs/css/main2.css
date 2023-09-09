@@ -649,5 +649,14 @@ select, input {
   border: 1px solid #ccc;
   border-radius: 4px;
 }
+#mybtn{
+  background-color: #525252;
+  color: white;
+  border-radius: 10%;
+border: 2px solid black;
+padding: 5px 5px;
+cursor: pointer;
+margin-top:10px ;
+}
 
 

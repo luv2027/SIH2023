@@ -10,7 +10,7 @@
     <meta name="keywords" content="Colorlib Templates">
 
     <!-- Title Page-->
-    <title>Registration Form</title>
+    <title>Login Page</title>
 
     <!-- Icons font CSS-->
     <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
@@ -32,8 +32,8 @@
         <div class="wrapper wrapper--w680">
             <div class="card card-4">
                 <div class="card-body">
-                    <h2 class="title">Registration Form</h2>
-                    <label for="profession">Select Profession:</label>
+                    <h2 class="title">Login Page</h2>
+                    <label for="profession">Select Privileged Acess:</label>
                     <select id="profession" onchange="updateForm()">
                         <option value="citizen">Citizen</option>
                         <option value="lawyer">Lawyer</option>
@@ -74,42 +74,37 @@
             // Add inputs based on selected profession
             if (profession === "lawyer") {
                 dynamicForm.innerHTML = `
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" name="name" required>
-                    <label for="license_number">License Number:</label>
-                    <input type="text" id="license_number" name="license_number">
-                    <label for="email">Email Id:</label>
-                    <input type="email" id="email" name="email">
+                <label for="ssoid">SSOID:</label>
+                    <input type="text" id="ssoid" name="ssoid" required>
+                    <label for="Password">Password : </label>
+                    <input type="text" id="Password" name="Password">
                     <button id = "mybtn">Submit</button>
 
                 `;
             } else if (profession === "registration") {
                 dynamicForm.innerHTML = `
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" name="name" required>
-                    <label for="registration_number">Registration Number:</label>
-                    <input type="text" id="registration_number" name="registration_number">
+                <label for="ssoid">SSOID:</label>
+                    <input type="text" id="ssoid" name="ssoid" required>
+                    <label for="Password">Password : </label>
+                    <input type="text" id="Password" name="Password">
                     <button id = "mybtn">Submit</button>
                 `;
             } else if (profession === "govt_employee") {
                 dynamicForm.innerHTML = `
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" name="name" required>
-                    <label for="employee_id">Employee ID:</label>
-                    <input type="text" id="employee_id" name="employee_id">
+                <label for="ssoid">SSOID:</label>
+                    <input type="text" id="ssoid" name="ssoid" required>
+                    <label for="Password">Password : </label>
+                    <input type="text" id="Password" name="Password">
                     <button id = "mybtn">Submit</button>
                 `;
             }
             else if (profession === "citizen") {
                 dynamicForm.innerHTML = `
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" name="name" required>
-                    <label for="adhar">Adhar : </label>
-                    <input type="text" id="adhar" name="adhar">
-                    <label for="phone no">Phone No:</label>
-                    <input type="phone" id="phone" name="phone">
-                    <label for="email">Email Id:</label>
-                    <input type="email" id="email" name="email">
+                    <label for="ssoid">SSOID:</label>
+                    <input type="text" id="ssoid" name="ssoid" required>
+                    <label for="Password">Password : </label>
+                    <input type="text" id="Password" name="Password">
+                   
                     <button id = "mybtn">Submit</button>
 
 
