@@ -641,6 +641,11 @@ progress {
   margin-left: auto;
 }
 
+.container h2{
+  padding-top: 20px;
+  padding-bottom: 50px;
+}
+
 #heading{
   position: sticky;
   top: 0px;
@@ -10881,7 +10886,7 @@ textarea.form-control-lg {
   }
 }
 .features-icons {
-  padding-top: 7rem;
+  padding-top: 4rem;
   padding-bottom: 7rem;
 }
 .features-icons .features-icons-item {
