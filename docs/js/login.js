@@ -19,22 +19,36 @@ function submitform(e) {
     var pass = document.getElementById('Password').value;
     console.log(ssoid)
     firebase.database().ref().child("registrationinfo").orderByChild("Ssoid").equalTo(ssoid).once("value", function (snapshot) {
-        snapshot.forEach(function (childsnapshot) {
+        var usersData = snapshot.val();
+        if (usersData != null) {
+            snapshot.forEach(function (childsnapshot) {
 
-            var usersData = snapshot.val();
-            var password = childsnapshot.child("Password").val();
-            console.log(password);
-            if (usersData == null) {
-                if (password != pass) {
-                    
-                    console.log("cannot login need to sign up");
+                var password = childsnapshot.child("Password").val();
+                console.log(password);
+                if (password == pass) {
+                    //todo suceess login
+                    location.replace("../index.html")
                 }
-            }
-            else {
-                
-                console.log(usersData);
-            }
+                else {
+                    //todo try again
+                    document.querySelector('#alert').style.display = "block";
+                    setTimeout(() => {
+            
+                        document.querySelector('#alert').style.display = "none";
+                    }, 3000);
+                }
+            
         });
+}
+        else {
+                //no user 
+                document.querySelector('#alert').style.display = "block";
+                setTimeout(() => {
+            
+                    document.querySelector('#alert').style.display = "none";
+                }, 3000);
+                
+            }
     });
     
 }
