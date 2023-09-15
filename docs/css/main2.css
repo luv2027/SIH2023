@@ -659,4 +659,6 @@ cursor: pointer;
 margin-top:10px ;
 }
 
-
+#alert{
+  display: none;
+}

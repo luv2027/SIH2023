@@ -42,20 +42,15 @@
                     </select>
                     <form id="dynamicForm">
                         <!-- Default inputs for Citizen -->
-                        <label for="name">Name:</label>
-                        <input type="text" id="name" name="name" required>
+                        <label for="ssoid">Ssoid : </label>
+                        <input type="text" id="ssoid" name="ssoid" required>
             
                         <!-- Additional inputs for Lawyers -->
-                        <label for="bar_number">Bar Number:</label>
-                        <input type="text" id="bar_number" name="bar_number">
+                        <label for="bar_number">Password:</label>
+                        <input type="password" id="password" name="password">
             
                         <!-- Additional inputs for Registration -->
-                        <label for="registration_number">Registration Number:</label>
-                        <input type="text" id="registration_number" name="registration_number">
-            
-                        <!-- Additional inputs for Government Employees -->
-                        <label for="employee_id">Employee ID:</label>
-                        <input type="text" id="employee_id" name="employee_id">
+                       
                       
                     </form>
 
@@ -77,8 +72,8 @@
                 <label for="ssoid">SSOID:</label>
                     <input type="text" id="ssoid" name="ssoid" required>
                     <label for="Password">Password : </label>
-                    <input type="text" id="Password" name="Password">
-                    <button id = "mybtn">Submit</button>
+                    <input type="password" id="Password" name="Password">
+                    <button type="submit" id = "mybtn">Submit</button>
 
                 `;
             } else if (profession === "registration") {
@@ -86,16 +81,16 @@
                 <label for="ssoid">SSOID:</label>
                     <input type="text" id="ssoid" name="ssoid" required>
                     <label for="Password">Password : </label>
-                    <input type="text" id="Password" name="Password">
-                    <button id = "mybtn">Submit</button>
+                    <input type="password" id="Password" name="Password">
+                    <button type="submit" id = "mybtn">Submit</button>
                 `;
             } else if (profession === "govt_employee") {
                 dynamicForm.innerHTML = `
                 <label for="ssoid">SSOID:</label>
                     <input type="text" id="ssoid" name="ssoid" required>
                     <label for="Password">Password : </label>
-                    <input type="text" id="Password" name="Password">
-                    <button id = "mybtn">Submit</button>
+                    <input type="password" id="Password" name="Password">
+                    <button type="submit" id = "mybtn">Submit</button>
                 `;
             }
             else if (profession === "citizen") {
@@ -103,9 +98,9 @@
                     <label for="ssoid">SSOID:</label>
                     <input type="text" id="ssoid" name="ssoid" required>
                     <label for="Password">Password : </label>
-                    <input type="text" id="Password" name="Password">
+                    <input type="password" id="Password" name="Password">
                    
-                    <button id = "mybtn">Submit</button>
+                    <button type="submit" id = "mybtn">Submit</button>
 
 
                 `;
@@ -115,6 +110,8 @@
         // Initially, call the updateForm() to set up the default form
         updateForm();
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
+    <script src="js/login.js"></script>
     <!-- Jquery JS-->
     <script src="vendor/jquery/jquery.min.js"></script>
     <!-- Vendor JS-->
