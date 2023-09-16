@@ -17,6 +17,7 @@ function submitform(e) {
     e.preventDefault();
     var ssoid = document.getElementById('ssoid').value;
     var pass = document.getElementById('Password').value;
+    var profession = document.getElementById('profession').value;
     console.log(ssoid)
     firebase.database().ref().child("registrationinfo").orderByChild("Ssoid").equalTo(ssoid).once("value", function (snapshot) {
         var usersData = snapshot.val();
@@ -24,10 +25,16 @@ function submitform(e) {
             snapshot.forEach(function (childsnapshot) {
 
                 var password = childsnapshot.child("Password").val();
+                var prof = childsnapshot.child("Profession").val();
                 console.log(password);
-                if (password == pass) {
+                console.log(prof);
+                if (password == pass && profession == prof) {
                     //todo suceess login
-                    location.replace("../index.html")
+                    document.querySelector('#alert2').style.display = "block";
+                    setTimeout(() => {
+            
+                        location.replace("../index.html")
+                    }, 3000);
                 }
                 else {
                     //todo try again

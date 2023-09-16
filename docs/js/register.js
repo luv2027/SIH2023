@@ -53,6 +53,8 @@ function submitform(e) {
             
             document.querySelector('#alert').style.display = "none";
             document.getElementById("dynamicForm").reset();
+            location.replace("../login.html")
+
         }, 3000);
         
 
@@ -83,6 +85,8 @@ function submitform(e) {
             
             document.querySelector('#alert').style.display = "none";
             document.getElementById("dynamicForm").reset();
+            location.replace("../login.html")
+
         }, 3000);
 
     }
@@ -111,6 +115,8 @@ function submitform(e) {
             
             document.querySelector('#alert').style.display = "none";
             document.getElementById("dynamicForm").reset();
+            location.replace("../login.html")
+
         }, 3000);
     }
     else if (profession == "govt_employee") {
@@ -139,6 +145,8 @@ function submitform(e) {
             
             document.querySelector('#alert').style.display = "none";
             document.getElementById("dynamicForm").reset();
+            location.replace("../login.html")
+
         }, 3000);
     }
     else if (profession == "govt_agencies") {
@@ -169,6 +177,9 @@ function submitform(e) {
             
             document.querySelector('#alert').style.display = "none";
             document.getElementById("dynamicForm").reset();
+            location.replace("../login.html")
+            
+
         }, 3000);
     }
     
