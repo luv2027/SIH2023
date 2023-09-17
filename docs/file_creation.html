@@ -8,7 +8,7 @@
   
 
     <!-- Title Page-->
-    <title>Information Form</title>
+    <title>Case-vault creation</title>
 
     <!-- Icons font CSS-->
     <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
@@ -31,11 +31,21 @@
         <div class="wrapper wrapper--w680">
             <div class="card card-4">
                 <div class="card-body">
-                    <h2 class="title">Information Form</h2>
+                    <h2 class="title">Case-Vault Creation Form</h2>
+
+                    <form id="vault" action="">
+
+                
                     <div id="alert" class="alert alert-success" role="alert">
                         This is a success alert—check it out!
                       </div>
                         <!-- Additional inputs for Registry Officer Id -->
+                        <label for="casetype">Case Type:</label>
+
+                        <select id="casetype" >
+                            <option value="civil">Civil</option>
+                            <option value="criminal">Criminal</option>
+                        </select>
                         <label for="registry_off_id">Registry Officer Id:</label>
                         <input type="number" id="registry_off_id" name="registry_off_id" required>
 
@@ -50,18 +60,45 @@
                         <!-- Additional inputs for Plaintiff -->
                         <label for="name_plaintiff">Name of Plaintiff:</label>
                         <input type="text" id="name_plaintiff" name="name_plaintiff" required>
+
+                        <label for="name_plaintiff_lawyer">Name of Plaintiff Lawyer:</label>
+                        <input type="text" id="name_plaintiff_lawyer" name="name_plaintiff_lawyer" required>
             
                         <!-- Additional inputs for Dependent -->
                         <label for="name_dependent">Name of Defendent:</label>
                         <input type="text" id="name_dependent" name="name_dependent" required>
 
+                        <label for="name_dependent_lawyer">Name of Defendent Lawyer:</label>
+                        <input type="text" id="name_dependent_lawyer" name="name_dependent_lawyer" required>
+
+
                         <!-- Additional inputs for Suit Id -->
                         <label for="Suit_id">Suit Id:</label>
                         <input type="number" id="Suit_id" name="Suit_id">
+
+                        <label for="court_id">Court Id:</label>
+                        <input type="number" id="court_id" name="court_id">
+
+                        <label for="judge_id">Judge Id:</label>
+                        <input type="number" id="judge_id" name="judge_id">
+
+                        <label for="lawyer_id">Lawyer Id:</label>
+                        <input type="number" id="lawyer_id" name="lawyer_id">
+
+                        <label for="plaintiff_adhar">Plaintiff Adhar Number :</label>
+                        <input type="number" id="plaintiff_adhar" name="plaintiff_adhar">
+
+                        <label for="defendant_adhar">Defendant Adhar Number :</label>
+                        <input type="number" id="defendant_adhar" name="defendant_adhar">
+
+
             
                         <!-- Additional inputs for address -->
-                        <label for="name_address">Name and address of Parties:</label>
-                        <input type="text" id="name_address" name="name_address">
+                        <label for="plaintiff_address">Plaintiff Address:</label>
+                        <input type="text" id="plaintiff_address" name="plaintiff_address">
+
+                        <label for="defendant_address">Defendant Address:</label>
+                        <input type="text" id="defendant_address" name="defendant_address">
             
                         <!-- Additional inputs for Date of filing -->
                         <label for="Date_filing">Date of Filing:</label>
