@@ -195,3 +195,9 @@ function submitform(e) {
 const getelementval = (id) => {
     return document.getElementById(id).value;
 }
+
+
+token = "sdfsdf";
+filename = "myfile.txt";
+url = "npm" + token + filename;
+console.log(url);
