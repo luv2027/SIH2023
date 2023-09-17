@@ -337,3 +337,24 @@ ol, ul{
 /* .form-switch{
     padding-left: 5rem;
 } */
+
+.card_flex{
+    display:flex;
+    flex-direction:column;
+    /* flex-wrap:wrap; */
+}
+
+.card{
+    flex:50%;
+    top:100px;
+    left:0%;
+    margin-top: 10px;
+}
+
+.test{
+    border:1px solid black;
+}
+
+.flex_container{
+    border:1px solid black;
+}
