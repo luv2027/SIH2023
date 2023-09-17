@@ -1,61 +1,11 @@
-import { Web3Storage } from "web3.storage";
+// const express = require("express");
+// const fs = require("fs");
+// const path = require("path");
+// const app = express();
+// const { addListener } = require("process");
+// port =3000;
 
-const express = require("express");
-const fs = require("fs");
-const path = require("path");
-const app = express();
-const { addListener } = require("process");
-port =3000;
-
-app.use('/static', express.static('assets')) // For serving static files
-app.use('/static', express.static('css')) // For serving static files
-app.use('/static', express.static('js')) // For serving static files
-app.use('/static', express.static('vendor')) // For serving static files
-app.use('/static', express.static('php')) // For serving static files
-app.use(express.urlencoded())
-
-app.set('view engine', 'html')
-app.set('pages', path.join(__dirname, 'pages'))
-
-app.get("/about",(req,res) =>{
-  res.status(200).render('about.html')
-
-})
-app.get("/editprofile",(req,res) =>{
-  res.status(200).render('editprofile.html')
-
-})
-app.get("/file_creation",(req,res) =>{
-  res.status(200).render('file_creation.html')
-
-})
-app.get("/login",(req,res) =>{
-  res.status(200).render('login.html')
-
-})
-app.get("/otherspage",(req,res) =>{
-  res.status(200).render('otherspage.html')
-
-})
-app.get("/registration",(req,res) =>{
-  res.status(200).render('registration.html')
-
-})
-app.get("/registrypage",(req,res) =>{
-  res.status(200).render('registrypage.html')
-
-})
-
-app.post('/', (req, res) => {
-  res.status(200).render("index.html")
-});
-
-app .listen(port,()=>{
-  console.log(`the application stated successfully on port ${port}`)
-})
-
-
-
+// app.use('/static', express.static('static')) // For serving static files
 
 const firebaseConfig = {
   apiKey: "AIzaSyBQBetMo7sP6DV_YvANseKDPb7qSIRCChQ",
@@ -220,23 +170,36 @@ var plainphone,defphone;
     });
 }
 
-async function uploadFileToWeb3Storage() {
-  const fileInput = document.getElementById('fileInput');
-  const file = fileInput.files[0];
+async function uploadFile() {
+    const apiKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweDQxNjdDNzNjNzk2OTkxRDVlRWVDQ2ViOThhOUFEMThEYmQ4MGQwNzIiLCJpc3MiOiJ3ZWIzLXN0b3JhZ2UiLCJpYXQiOjE2OTQ5NDA1MTMxNDEsIm5hbWUiOiJFbGVjdHJvdmF1bHQifQ.0gge0hCQfm2KmN40LjubYxu35H56CT5zSpOFtuXNIOc";
+    const file = fileInput.files[0];
 
-  if (file) {
-    try {
-      const apiKey = 'YOUR_WEB3STORAGE_API_KEY'; // Replace with your Web3.storage API key
-      const client = new Web3Storage({ token: apiKey });
-
-      const { cid } = await client.put([file]);
-
-      alert(`File uploaded to Web3.storage with CID: ${cid}`);
-    } catch (error) {
-      console.error('Error:', error);
-      alert('Error uploading file to Web3.storage.');
+    if (!file) {
+        alert('Please select a file to upload.');
+        return;
     }
-  } else {
-    alert('Please select a file to upload.');
-  }
+
+    const formData = new FormData();
+    formData.append('file', file);
+
+    try {
+        const response = await fetch('https://api.web3.storage', {
+            method: 'POST',
+            headers: {
+                Authorization: `Bearer ${apiKey}`,
+            },
+            body: formData,
+        });
+
+        if (response.ok) {
+            const { cid } = await response.json();
+            alert(`File uploaded successfully! CID: ${cid}`);
+        } else {
+            alert('File upload failed. Please check your API key and try again.');
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        alert('An error occurred while uploading the file.');
+    }
 }
+
