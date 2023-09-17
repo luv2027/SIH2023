@@ -1,11 +1,3 @@
-// const express = require("express");
-// const fs = require("fs");
-// const path = require("path");
-// const app = express();
-// const { addListener } = require("process");
-// port =3000;
-
-// app.use('/static', express.static('static')) // For serving static files
 
 const firebaseConfig = {
   apiKey: "AIzaSyBQBetMo7sP6DV_YvANseKDPb7qSIRCChQ",
@@ -168,38 +160,5 @@ var plainphone,defphone;
         }, 3000);
       }
     });
-}
-
-async function uploadFile() {
-    const apiKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweDQxNjdDNzNjNzk2OTkxRDVlRWVDQ2ViOThhOUFEMThEYmQ4MGQwNzIiLCJpc3MiOiJ3ZWIzLXN0b3JhZ2UiLCJpYXQiOjE2OTQ5NDA1MTMxNDEsIm5hbWUiOiJFbGVjdHJvdmF1bHQifQ.0gge0hCQfm2KmN40LjubYxu35H56CT5zSpOFtuXNIOc";
-    const file = fileInput.files[0];
-
-    if (!file) {
-        alert('Please select a file to upload.');
-        return;
-    }
-
-    const formData = new FormData();
-    formData.append('file', file);
-
-    try {
-        const response = await fetch('https://api.web3.storage', {
-            method: 'POST',
-            headers: {
-                Authorization: `Bearer ${apiKey}`,
-            },
-            body: formData,
-        });
-
-        if (response.ok) {
-            const { cid } = await response.json();
-            alert(`File uploaded successfully! CID: ${cid}`);
-        } else {
-            alert('File upload failed. Please check your API key and try again.');
-        }
-    } catch (error) {
-        console.error('Error:', error);
-        alert('An error occurred while uploading the file.');
-    }
 }
 
