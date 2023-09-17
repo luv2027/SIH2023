@@ -31,10 +31,27 @@ function submitform(e) {
                 if (password == pass && profession == prof) {
                     //todo suceess login
                     document.querySelector('#alert2').style.display = "block";
-                    setTimeout(() => {
+
+                    if (prof == "registration") {
+                        setTimeout(() => {
             
-                        location.replace("../index.html")
-                    }, 3000);
+                            location.replace("../registrypage.html")
+                            var name = childsnapshot.child("Name").val();
+                            var myprofession = childsnapshot.child("Profession").val();
+                            document.querySelector(".text.name").textContent = name;
+                            document.querySelector(".text.profession").textContent = myprofession;
+
+
+
+                        }, 1000);
+                    }
+                    else {
+                        
+                        setTimeout(() => {
+                
+                            location.replace("../otherspage.html")
+                        }, 1000);
+                    }
                 }
                 else {
                     //todo try again
@@ -42,7 +59,7 @@ function submitform(e) {
                     setTimeout(() => {
             
                         document.querySelector('#alert').style.display = "none";
-                    }, 3000);
+                    }, 2000);
                 }
             
         });

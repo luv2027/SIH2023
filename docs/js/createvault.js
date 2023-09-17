@@ -1,3 +1,5 @@
+
+
 const firebaseConfig = {
     apiKey: "AIzaSyBQBetMo7sP6DV_YvANseKDPb7qSIRCChQ",
     authDomain: "electrovault-e2de8.firebaseapp.com",
@@ -11,12 +13,15 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 var registerinfodb = firebase.database().ref('Case-vault')
+console.log("in the js file");
 
 
 document.getElementById('vault').addEventListener("submit", submitform);
 
 
 function submitform(e) {
+    e.preventDefault();
+
     var casetype = getelementval("casetype");
     var registeryofficerid = getelementval("registry_off_id");
     var courtname = getelementval("name_court");
@@ -45,8 +50,32 @@ function submitform(e) {
         "Registery_officer_id": registeryofficerid,
         "Court_name": courtname,
         "Judge_name": namejudge,
-        "Plaintiff_name":plaintiffname,
-    })
+        "Plaintiff_name": plaintiffname,
+        "Defendant_name": namedefendant,
+        "Plaintiff_lawyer": plaintifflawyer,
+        "Defendant_lawyer": defendantlawyer,
+        "Suit_id": suitid,
+        "Court_id": courtid,
+        "Judge_id": judgeid,
+        "Lawyer_id": lawyerid,
+        "Plaintiff_adhar": plaintiffadhar,
+        "Defendant_adhar": defendantadhar,
+        "Plaintiff_address": plaintiffaddress,
+        "Defendant_address": defendantaddress,
+        "Date_of_filling": datefiling,
+        "Charges": charges,
+        "Facts": facts,
+        "Relief": releif
+    });
+
+    document.querySelector('#alert').style.display = "block";
+
+    setTimeout(() => {
+            
+        document.querySelector('#alert').style.display = "none";
+        location.replace("../registrypage.html");
+
+    }, 3000);
 
 
 
