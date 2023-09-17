@@ -15,7 +15,13 @@ firebase.initializeApp(firebaseConfig);
 document.getElementById('reg_search').addEventListener("submit", submitform);
 
 function submitform(e) {
-    e.preventDefault();
+  e.preventDefault();
+  var plainphone,defphone;
+
+  firebase.database().ref().child("registrationinfo").orderByChild("Suit_id").equalTo(Suitid).once("value", function (snapshot) {
+  
+
+  
     var Suitid= document.getElementById('Suit_id').value;
     console.log(Suitid);
     firebase.database().ref().child("Case-vault").orderByChild("Suit_id").equalTo(Suitid).once("value", function (snapshot) {
@@ -42,58 +48,94 @@ function submitform(e) {
                 var datefiling = childsnapshot.child("Date_filing").val();
                 var charges = childsnapshot.child("Charges").val();
                 var facts = childsnapshot.child("Facts").val();
-                var releif = childsnapshot.child("Relief").val();
-            
-                document.querySelector(".card-header").innerHTML =
-                (`<div class="card_flex">
+              var releif = childsnapshot.child("Relief").val();
+              firebase.database().ref().child("registrationinfo").orderByChild("Adhar_number").equalTo(plaintiffadhar).once("value", function (snapshot2) {
+
+                let plaintiffdata = snapshot2.val();
+                if (plaintiffdata != null) {
+                  snapshot2.forEach(function (childsnapshot2) {
+
+                    plainphone = childsnapshot2.child("Phone_number").val();
+
+                  
+                  });
+                }
+                
+              });
+              firebase.database().ref().child("registrationinfo").orderByChild("Adhar_number").equalTo(defendantadhar).once("value", function (snapshot2) {
+
+              
+              let defendantdata = snapshot2.val();
+              if (defendantdata != null) {
+                snapshot2.forEach(function (childsnapshot2) {
+
+                  defphone = childsnapshot2.child("Phone_number").val();
+
+                
+                });
+              }
+              
+            });
+                
+                  
+                  
+                    
+                    document.querySelector(".card-header").innerHTML =
+                  (`<div class="card_flex">
                 <div class="card">
                 <h5 class="card-header"> ` + suitid + `</h5>
                 <div class="card-body">
                   <h5 class="card-title">Case Summary </h5>
                   <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
                   <a href="#" class="btn btn-primary">view</a>
-                </div>
-            </div>
-                <div class="card">
-                    <h5 class="card-header"> Plaintiff</h5>
-                    <div class="card-body">
-                      <p class="card-text"></p>
-                      <a href="#" class="btn btn-primary">view</a>
-                    </div>
-                </div>
-
-                <div class="card">
-                <h5 class="card-header">Defendant</h5>
-                <div class="card-body">
+                  </div>
+                  </div>
+                  <div class="card">
+                  <h5 class="card-header"> Plaintiff</h5>
+                  <div class="card-body">
+                  <p class="card-text"> Plaintiff Name :`  + plaintiffname + `</p>
+                  <p class="card-text"> Plaintiff Adhar : `  + plaintiffadhar + `</p>
+                  <p class="card-text"> Plaintiff Address : `  + plaintiffaddress + `</p>
+                      
+                      
+                  <a href="#" class="btn btn-primary">view</a>
+                  </div>
+                  </div>
+                  
+                  <div class="card">
+                  <h5 class="card-header">Defendant</h5>
+                  <div class="card-body">
+                  <p class="card-text"> Defendant Name :`  + namedefendant + `</p>
+                  <p class="card-text"> Defendant Adhar : `  + defendantadhar + `</p>
+                  <p class="card-text"> Defendant Address : `  + defendantaddress + `</p>
+                  <a href="#" class="btn btn-primary">view</a>
+                  </div>
+                  </div>
+                  
+                  <div class="card">
+                  <h5 class="card-header">Plaintiff - Lawyer</h5>
+                  <div class="card-body">
                   <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
                   <a href="#" class="btn btn-primary">view</a>
-                </div>
-            </div>
-
-            <div class="card">
-            <h5 class="card-header">Plaintiff - Lawyer</h5>
-            <div class="card-body">
-              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-              <a href="#" class="btn btn-primary">view</a>
-            </div>
-        </div>
-
-        <div class="card">
-        <h5 class="card-header">Defendant - Lawyer</h5>
-        <div class="card-body">
-          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          <a href="#" class="btn btn-primary">view</a>
-        </div>
-    </div>
-
-    <div class="card">
-    <h5 class="card-header">Judge</h5>
-    <div class="card-body">
-      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-      <a href="#" class="btn btn-primary">view</a>
-    </div>
-</div>
-            </div>`);
+                  </div>
+                  </div>
+                  
+                  <div class="card">
+                  <h5 class="card-header">Defendant - Lawyer</h5>
+                  <div class="card-body">
+                  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                  <a href="#" class="btn btn-primary">view</a>
+                  </div>
+                  </div>
+                  
+                  <div class="card">
+                  <h5 class="card-header">Judge</h5>
+                  <div class="card-body">
+                  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                  <a href="#" class="btn btn-primary">view</a>
+                  </div>
+                  </div>
+                  </div>`);
         });
 }  
         else {
