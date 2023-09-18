@@ -14,6 +14,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     
     <title>home page</title> 
+  
+
 </head>
 <body>
     <nav class="sidebar close" >
@@ -91,8 +93,12 @@
 
                 <div class="form">
                   <i class="fa fa-search"></i>
-                  <input type="text" class="form-control form-input" placeholder="Search CaseID">
-                  <span class="left-pan"><i class="fa fa-microphone"></i></span>
+                  <input type="text" id="form_suit" class="form-control form-input" placeholder="Search CaseID">
+                  <button  id="reg_search" type="submit"></button>
+
+                </div>
+                
+                <div class="card-header">
                 </div>
                 
               </div>
@@ -101,10 +107,18 @@
             
           </div>
     </section>
+    <script>
+        console.log(localStorage.getItem('Name'));
+                document.getElementsByClassName('name').innerHTML = localStorage.getItem('Name');
+            document.getElementsByClassName('professioin').innerHTML = localStorage.getItem('Profession');
+    </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
+
+  <script src="js/otherspagevault.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
     <script src="js/mainpages.js"></script>
-    <script src="js/login.js"> </script>
+
 
 </body>
 </html>

@@ -117,7 +117,7 @@ var plainphone,defphone;
                       <input type = "file" id = "fileInput">
                       <button id="upload_button" onclick = "uploadFile()">Upload</button>
                     </div>
-                </div>
+                </div>  
 
                 <div class="card">
                 <h5 class="card-header">Defendant</h5>
@@ -161,4 +161,3 @@ var plainphone,defphone;
       }
     });
 }
-

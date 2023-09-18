@@ -35,12 +35,13 @@ function submitform(e) {
                     if (prof == "registration") {
                         setTimeout(() => {
             
-                            // location.replace("../registrypage.html")
+                            location.replace("../registrypage.html")
                             var name = childsnapshot.child("Name").val();
                             var myprofession = childsnapshot.child("Profession").val();
+                            localStorage.setItem('Name', name);
+                            localStorage.setItem('Profession', myprofession);
                             console.log(name,profession)
-                            document.querySelector(".header .image-text .name").innerHTML = name;
-                            document.querySelector("header .image-text .profession").innerHTML = myprofession;
+                        
 
 
 
@@ -50,13 +51,13 @@ function submitform(e) {
                         
                         setTimeout(() => {
                 
-                            // location.replace("../otherspage.html")
-                            var gethtml = getDocument("../registrypage.html");
+                            location.replace("../otherspage.html")
                             var name = childsnapshot.child("Name").val();
                             var myprofession = childsnapshot.child("Profession").val();
-                            console.log(name,profession)
-                            gethtml.document.querySelector(".header.image-text.name").innerHTML = name;
-                            gethtml.document.querySelector("header.image-text.profession").innerHTML = myprofession;
+                            console.log(name, profession)
+                            localStorage.setItem('Name', name);
+                            localStorage.setItem('Profession', myprofession);
+
                         }, 1000);
                     }
                 }
