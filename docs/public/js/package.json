@@ -1,0 +1,17 @@
+{
+  "type": "module",
+  "dependencies": {
+    "express": "^4.18.2",
+    "path": "^0.12.7",
+    "web3.storage": "^4.5.5"
+  },
+  "name": "package",
+  "version": "1.0.0",
+  "main": "scripts.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "me",
+  "license": "ISC",
+  "description": ""
+}
