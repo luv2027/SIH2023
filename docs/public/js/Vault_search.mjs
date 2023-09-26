@@ -15,12 +15,12 @@ const button = document.getElementById('reg_search');
 button.addEventListener('click', submitform);
 
 var registerinfodb = firebase.database().ref('Case-vault')
-
+var Suitid;
 function submitform(e) {
   e.preventDefault();
   var plainphone,defphone;
   
-  var Suitid = document.getElementById("form_suit").value;
+   Suitid = document.getElementById("form_suit").value;
   console.log(Suitid);
   
   firebase.database().ref().child("Case-vault").orderByChild("Suit_id").equalTo(Suitid).once("value", function (snapshot) {
@@ -152,15 +152,33 @@ function submitform(e) {
       });
     } else {
         //no user
-        document.querySelector("#alert").style.display = "block";
+        document.querySelector(".card-header").innerHTML = "";
         setTimeout(() => {
-          document.querySelector("#alert").style.display = "none";
-        }, 3000);
+          
+          alert("Case Id not registered in the database");
+        }, 500);
+        // document.querySelector("#alert").style.display = "block";
+        // setTimeout(() => {
+        //   document.querySelector("#alert").style.display = "none";
+        // }, 3000);
       }
     });
 }
 
+var docinfodb = firebase.database().ref('Documentdetails');
+
+
 function uploadFile() { 
+  var newregistration = docinfodb.push();
+  newregistration.set({
+    "Suit Id": Suitid,
+    "Name": "",
+    "Submited by": "",
+    "Cid":""
+    
+      
+  });
+
     location.replace("https://m3hy47.csb.app/src/App.js:19:47")
 }
 
