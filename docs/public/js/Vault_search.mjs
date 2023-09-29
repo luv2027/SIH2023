@@ -81,7 +81,7 @@ function submitform(e) {
 
         document.querySelector(".card-header").innerHTML =
             `<div class="card_flex">
-
+            <div class="mydata">
             <div class="card">
                 <h5 class="card-header"> ` +suitid +`</h5>
                 <div class="card-body">
@@ -115,39 +115,9 @@ function submitform(e) {
                       <p class="card-text"></p>
                       <button id="upload_button" onclick = "uploadFile()">Upload</button>
                     </div>
-                </div>  
+                </div>
+                </div>
 
-                <div class="card">
-                <h5 class="card-header">Defendant</h5>
-                <div class="card-body">
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                  <a href="#" class="btn btn-primary">view</a>
-                  </div>
-            </div>
-
-            <div class="card">
-            <h5 class="card-header">Plaintiff - Lawyer</h5>
-            <div class="card-body">
-              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-              <a href="#" class="btn btn-primary">view</a>
-            </div>
-        </div>
-
-        <div class="card">
-        <h5 class="card-header">Defendant - Lawyer</h5>
-        <div class="card-body">
-          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          <a href="#" class="btn btn-primary">view</a>
-        </div>
-    </div>
-
-        <div class="card">
-        <h5 class="card-header">Judge</h5>
-        <div class="card-body">
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-primary">view</a>
-        </div>
-        </div>
         </div>`;
       });
     } else {
@@ -174,12 +144,13 @@ function uploadFile() {
     "Suit Id": Suitid,
     "Name": "",
     "Submited by": "",
-    "Cid":""
+    "Cid": "",
+    "File_Name":""
     
       
   });
 
-    location.replace("https://m3hy47.csb.app/src/App.js:19:47")
+    location.replace("https://vm4jg5.csb.app/")
 }
 
 
