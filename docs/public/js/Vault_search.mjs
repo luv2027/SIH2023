@@ -39,7 +39,7 @@ function submitform(e) {
           var namedefendant = childsnapshot.child("Defendant_name").val();
           var plaintifflawyer = childsnapshot.child("Plaintiff_lawyer").val();
           var defendantlawyer = childsnapshot.child("Defendant_lawyer").val();
-          var suitid = childsnapshot.child("Suit_id").val();
+          suitid = childsnapshot.child("Suit_id").val();
           var courtid = childsnapshot.child("Court_id").val();
           var judgeid = childsnapshot.child("Judge_id").val();
           var lawyerid = childsnapshot.child("Lawyer_id").val();
@@ -77,7 +77,17 @@ function submitform(e) {
             });
           }
           
-        });
+          });
+          
+
+          // firebase.database().ref().child("Documentdetails").orderByChild("Suit Id").equalTo(suitid).("value", function (snapshot3)){
+          //   let docdata = snapshot3.val();
+          //   if (docdata != null) {
+          //     snapshot3.forEach(function (childsnapshot3)){
+                
+          //     }
+          //   }
+          // }
 
         document.querySelector(".card-header").innerHTML =
             `<div class="card_flex">
@@ -110,16 +120,22 @@ function submitform(e) {
             </div>
 
                 <div class="card">
-                    <h5 class="card-header"> Plaintiff</h5>
+                    <h5 class="card-header"> Upload Documents</h5>
                     <div class="card-body">
                       <p class="card-text"></p>
                       <button id="upload_button" onclick = "uploadFile()">Upload</button>
                     </div>
                 </div>
+                <div class="card">
+                <h5 class="card-header"> View Document</h5>
+                <div id="dataadd" class="card-body">
+              
+            </div>
                 </div>
 
         </div>`;
       });
+      Getdata(suitid);
     } else {
         //no user
         document.querySelector(".card-header").innerHTML = "";
@@ -143,7 +159,7 @@ function uploadFile() {
   newregistration.set({
     "Suit Id": Suitid,
     "Name": "",
-    "Submited by": "",
+    "Submited_by": "",
     "Cid": "",
     "File_Name":""
     
@@ -175,4 +191,146 @@ async function uploadFileToWeb3Storage() {
   } else {
       alert('Please select a file to upload.');
             }
+}
+
+
+function additem(name, submit, cid, filename) {
+  const id = document.getElementById("dataadd");
+  let article = `
+  <div class="row">
+  <div class="col-7">
+  <p class="card-text">`+ name  + `</p>
+    
+  </div>
+  <div class="col-1">
+  <button data-modal-target="#view" id="view_button">View</button>
+    
+  </div>
+  <div class="col-1">
+  <button id="download_button">Download</button>
+    
+  </div>
+  
+  </div>
+  <p class="card-text">Submittedby:` + submit + `</p>
+  <br>
+  `;
+
+  id.innerHTML += article;
+
+  
+  
+}
+function Addallitems(data) {
+  data.forEach(element => {
+    additem(element.Name, element.Submited_by, element.Cid, element.File_Name);
+     
+    // document.getElementById('formal').addEventListener('submit', () => {
+    //   view(element.Cid, element.File_Name);
+    // })
+    const url = `https://W3s.link/ipfs/${element.Cid}/${element.File_Name}`;
+    const openmodalbutton = document.querySelectorAll('[data-modal-target]');
+    const closemodalbutton = document.querySelectorAll('[data-close-button]');
+    const overlay = document.getElementById('overlay');
+  
+    closemodalbutton.forEach(button => {
+      button.addEventListener('click', () => {
+        const view = button.closest('.view');
+        closemodal(view,overlay);
+      })
+    })
+    
+    openmodalbutton.forEach(button => {
+      button.addEventListener('click', () => {
+        const view = document.querySelector(button.dataset.modalTarget);
+        openmodal(view, overlay);
+        document.getElementById('container').src = url;
+        
+      })
+    })
+    
+  
+  
+  
+
+    
+  })
+}
+
+function Getdata(cid) {
+  const dbref = firebase.database().ref();
+  dbref.child("Documentdetails").orderByChild("Suit Id").equalTo(cid).on('value', function (snapshot4){
+    
+    var data = [];
+    let d= snapshot4.val();
+    if (d != null) {
+      snapshot4.forEach(function (childsnapshot4) {
+        
+        data.push(childsnapshot4.val());
+        console.log("this is working")
+        
+      });
+      console.log(data);
+
+      Addallitems(data);
+    }
+
+  })
+  // get(child(dbref,"Documentdetails").orderByChild("Suit Id").equalTo(cid)).then((snapshot4) => {
+  //   var data = [];
+  //   array.forEach(childsnapshot4 => {
+  //     data.push(childsnapshot4.val());
+
+  //   }); 
+  //   Addallitems(data);
+  // })
+
+}
+
+function view(cid, filename) {
+  const url = `https://W3s.link/ipfs/${cid}/${filename}`;
+  const openmodalbutton = document.querySelectorAll('[data-modal-target]');
+  const closemodalbutton = document.querySelectorAll('[data-close-button]');
+  const overlay = document.getElementById('overlay');
+
+  closemodalbutton.forEach(button => {
+    button.addEventListener('click', () => {
+      const view = button.closest('.view');
+      openmodal(view);
+    })
+  })
+  
+  openmodalbutton.forEach(button => {
+    button.addEventListener('click', () => {
+      const view = document.querySelector(button.dataset.modalTarget);
+      closemodal(view);
+    })
+  })
+  
+  document.getElementById('container').src = url;
+
+
+
+
+
+  
+  
+}
+
+function openmodal(view) {
+  if (view == null) return;
+  view.classList.add('active');
+  overlay.classList.add('active');
+
+
+
+}
+
+function closemodal(view) {
+  if (view == null) return;
+  view.classList.remove('active');
+  overlay.classList.remove('active');
+
+
+
 }
